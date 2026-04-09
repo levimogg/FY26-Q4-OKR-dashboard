@@ -1,99 +1,97 @@
 {
   "config": {
     "org_name": "TFA Washington",
-    "fiscal_period": "Q4 FY26",
     "next_review_date": "2026-05-07",
-    "updated": "2026-04-09",
-    "source": "FY26 TFA WA KPIs and OKRs — Q4 (Org) tab"
+    "top_flags_on_agenda": 5
   },
-  "org_okrs": [
+  "objectives": [
     {
-      "id": "org-1",
-      "objective": "Ensure incoming corps members are fully prepared, supported, and retained through preservice",
-      "key_result": "100% of incoming CMs have participated in at least one interview by May 31 · 90% retention of incoming CMs · 90% of ICMs at 100% completion on matriculation/onboarding/hiring tasks",
-      "owner": "Tierra (w/ Jackie)",
-      "current": 0,
-      "target": 100,
-      "unit": "%",
+      "id": "o1",
+      "objective": "Incoming corps members arrive Day 1 confident, committed, and ready to teach.",
       "status": "on_track",
+      "status_note": "",
       "next_step": "",
-      "trend": [0, 0, 0, 0, 0]
+      "krs": [
+        {"id":"o1-kr1","key_result":"100% of ICMs complete ≥1 school interview by May 31","owner":"Tierra","target":100,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o1-kr2","key_result":"90% ICM retention from signed commitment → FDOS","owner":"Tierra","target":90,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o1-kr3","key_result":"95% of ICMs complete all matriculation/onboarding tasks by their stage deadline","owner":"Tierra & Jackie","target":95,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""}
+      ]
     },
     {
-      "id": "org-2",
-      "objective": "Be 100% ready to execute summer school",
-      "key_result": "Federal Way alignment documented by May 31 · Seasonal staff + regional team fully hired and onboarded · FT staff execution-ready with 100% of core deliverables complete",
-      "owner": "Tierra & Amy",
-      "current": 0,
-      "target": 100,
-      "unit": "%",
+      "id": "o2",
+      "objective": "Summer school launches Day 1 as our strongest instructional experience yet.",
       "status": "on_track",
+      "status_note": "",
       "next_step": "",
-      "trend": [0, 0, 0, 0, 0]
+      "krs": [
+        {"id":"o2-kr1","key_result":"Shared TFA WA ↔ Federal Way vision, outcomes, and success metrics signed by both leadership teams by May 31","owner":"Tierra & Amy","target":1,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o2-kr2","key_result":"100% of seasonal + regional staff hired, onboarded, and role-confirmed by May 31","owner":"Amy, Damian, & Lailanie","target":100,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o2-kr3","key_result":"Execution readiness package (project plan, schedule, contingency, curriculum) reviewed + approved by May 15","owner":"Amy, Damian, & Lailanie","target":1,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""}
+      ]
     },
     {
-      "id": "org-3",
-      "objective": "Retain and develop corps members as the primary driver of student impact",
-      "key_result": "Retain 98% of CMs through EOY · 95% belonging score on EOY survey · 90%+ favorable principal survey across rehire, TFA support, recommend · Touchpoint with every current partner",
-      "owner": "Amy, Damian & Lailanie",
-      "current": 0,
-      "target": 98,
-      "unit": "%",
+      "id": "o3",
+      "objective": "Corps members are retained and developed as our primary lever for student impact.",
       "status": "on_track",
+      "status_note": "",
       "next_step": "",
-      "trend": [0, 0, 0, 0, 0]
+      "krs": [
+        {"id":"o3-kr1","key_result":"98% CM retention through June 25, 2026","owner":"Amy, Damian, & Lailanie","target":98,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o3-kr2","key_result":"EOY belonging score ≥95% (baseline TBD)","owner":"Amy, Damian, & Lailanie","target":95,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o3-kr3","key_result":"≥90% favorable across 3 principal-survey indicators (rehire, TFA support, recommend)","owner":"Amy & Damian","target":90,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o3-kr4","key_result":"100% of current partners receive a documented progress touchpoint by [date TBD]","owner":"Amy & Damian","target":100,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""}
+      ]
     },
     {
-      "id": "org-4",
-      "objective": "Create a high-quality alumni experience that fosters belonging, clarity, and meaningful engagement",
-      "key_result": "200+ attendees at alumni induction · 8–10 specific alumni recruited into the room · 90% alumni rate experience favorably",
-      "owner": "Tierra",
-      "current": 0,
-      "target": 200,
-      "unit": "attendees",
-      "status": "at_risk",
-      "next_step": "Lock the 8–10 target list and start individualized outreach",
-      "trend": [0, 0, 0, 0, 0]
-    },
-    {
-      "id": "org-5",
-      "objective": "Raise the revenue to sustain the work",
-      "key_result": "Raise $500K by May 31 · Deliver FY27 development plan (pipeline, goals, campaigns, stewardship, comms, ops) · Activate Board Fundraising Committee · Launch annual stewardship plan",
-      "owner": "Ryan",
-      "current": 0,
-      "target": 500000,
-      "unit": "$",
-      "status": "at_risk",
-      "next_step": "Confirm top 10 prospect moves for April–May",
-      "trend": [0, 0, 0, 0, 0]
-    },
-    {
-      "id": "org-6",
-      "objective": "Build an AI-fluent, high-retention team and board",
-      "key_result": "80% board retention · Team demonstrates AI dexterity across meeting prep, coaching, and data analysis",
-      "owner": "Monika",
-      "current": 0,
-      "target": 80,
-      "unit": "%",
+      "id": "o4",
+      "objective": "Alumni experience the region as a place of belonging and purpose — and show up for the mission.",
       "status": "on_track",
+      "status_note": "",
       "next_step": "",
-      "trend": [0, 0, 0, 0, 0]
+      "krs": [
+        {"id":"o4-kr1","key_result":"200+ attendees at alumni induction","owner":"Tierra","target":200,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o4-kr2","key_result":"8–10 named priority alumni confirmed in the room","owner":"Tierra","target":10,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o4-kr3","key_result":"≥90% favorable satisfaction on post-event survey","owner":"Tierra","target":90,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""}
+      ]
+    },
+    {
+      "id": "o5",
+      "objective": "Every incoming CM has a classroom — 40+ placed by FDOS.",
+      "status": "on_track",
+      "status_note": "",
+      "next_step": "",
+      "krs": [
+        {"id":"o5-kr1","key_result":"2 new PSAs secured by May 31","owner":"Liah","target":2,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o5-kr2","key_result":"30% (12) of 2026 corps placed by end of Q4","owner":"Liah & Tierra","target":12,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o5-kr3","key_result":"20 new principals confirm willingness to interview CMs (via survey)","owner":"Liah & Tierra","target":20,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""}
+      ]
+    },
+    {
+      "id": "o6",
+      "objective": "TFA WA becomes a future-ready organization that scales its people and dollars.",
+      "status": "on_track",
+      "status_note": "",
+      "next_step": "",
+      "krs": [
+        {"id":"o6-kr1","key_result":"86% staff agree budget aligns with strategic intent","owner":"Monika","target":86,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o6-kr2","key_result":"80% Culture Amp engagement","owner":"Monika","target":80,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o6-kr3","key_result":"Team AI dexterity score rises from [baseline TBD] → [target TBD]","owner":"Monika","target":100,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o6-kr4","key_result":"80% board retention","owner":"Monika","target":80,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""}
+      ]
+    },
+    {
+      "id": "o7",
+      "objective": "Development engine fuels FY27 from a position of strength.",
+      "status": "on_track",
+      "status_note": "",
+      "next_step": "",
+      "krs": [
+        {"id":"o7-kr1","key_result":"$500K raised by May 31","owner":"Ryan","target":500000,"current":0,"unit":"$","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o7-kr2","key_result":"FY27 development plan approved by board by [date TBD] — pipeline, quarterly benchmarks, strategy pyramid, stewardship + comms + ops plans","owner":"Ryan","target":1,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o7-kr3","key_result":"Board Fundraising Committee owns ≥2 fall-event workstreams and completes ≥[X TBD] individualized donor touches","owner":"Ryan","target":2,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o7-kr4","key_result":"Annual stewardship plan launched and ≥[X TBD] touchpoints executed by May 31","owner":"Ryan","target":1,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""}
+      ]
     }
   ],
-  "function_okrs": [
-    {"id":"fn-1","function":"Recruitment","objective":"Build and activate hiring pathways","key_result":"30% (12) of 2026 corps have secured roles by end of Q4","owner":"Tierra / Liah","current":0,"target":12,"unit":"CMs","status":"at_risk","rolls_up_to":"org-2","next_step":"Escalate stalled district conversations","trend":[0,0,0,0,0]},
-    {"id":"fn-2","function":"Recruitment","objective":"Expand principal pipeline","key_result":"Participate in 20 new school-leader meetings with principals who haven't hired a CM, by June 15","owner":"Tierra / Liah","current":0,"target":20,"unit":"meetings","status":"on_track","rolls_up_to":"org-2","next_step":"","trend":[0,0,0,0,0]},
-    {"id":"fn-3","function":"Comms","objective":"Raise awareness of incoming cohort","key_result":"Attend 2–3 community engagement events by June 1","owner":"Liah","current":0,"target":3,"unit":"events","status":"on_track","rolls_up_to":"org-2","next_step":"","trend":[0,0,0,0,0]},
-    {"id":"fn-4","function":"Comms","objective":"Ship principal-facing marketing","key_result":"Develop 2 new marketing factsheets targeted for principals and district leaders by May 1","owner":"Liah","current":0,"target":2,"unit":"factsheets","status":"at_risk","rolls_up_to":"org-2","next_step":"Confirm factsheet outline by 4/15","trend":[0,0,0,0,0]},
-    {"id":"fn-5","function":"Comms","objective":"Showcase incoming corps on LinkedIn","key_result":"Spotlight 6 incoming 2026 CMs on LinkedIn by June 1","owner":"Liah","current":0,"target":6,"unit":"posts","status":"on_track","rolls_up_to":"org-2","next_step":"","trend":[0,0,0,0,0]},
-    {"id":"fn-6","function":"Program","objective":"Deepen Ignite school partnerships","key_result":"100% (2/2) renewing schools sign renewal contract by 6/10 · 100% (2/2) sign increased cost-sharing 1–1.5% from FY25","owner":"Program","current":0,"target":2,"unit":"schools","status":"on_track","rolls_up_to":"org-3","next_step":"","trend":[0,0,0,0,0]},
-    {"id":"fn-7","function":"Alumni","objective":"Activate alumni in high-leverage roles","key_result":"Engage 15–20 alumni in defined roles (ICM mock interviews, school-leader referrals, hiring fair participation) by end of Q4","owner":"Tierra","current":0,"target":20,"unit":"alumni","status":"at_risk","rolls_up_to":"org-4","next_step":"Finalize role menu and outreach list","trend":[0,0,0,0,0]},
-    {"id":"fn-8","function":"Development","objective":"Activate Board Fundraising Committee","key_result":"Board FRC owns fall event push and individualized networking","owner":"Ryan","current":0,"target":100,"unit":"%","status":"at_risk","rolls_up_to":"org-5","next_step":"Schedule FRC kickoff by 4/25","trend":[0,0,0,0,0]},
-    {"id":"fn-9","function":"Development","objective":"Build FY27 development plan","key_result":"Deliver refreshed pipeline, quarterly goals, campaign pyramid, stewardship + comms + ops plan","owner":"Ryan","current":0,"target":100,"unit":"%","status":"on_track","rolls_up_to":"org-5","next_step":"","trend":[0,0,0,0,0]}
-  ],
-  "flags": [
-    {"id":"f-seed-1","okr_id":"org-5","author":"Seed","type":"challenge","text":"Revenue pacing behind — need visibility on which prospects are actually moving this quarter.","upvotes":3,"created_at":"2026-04-09"},
-    {"id":"f-seed-2","okr_id":"org-4","author":"Seed","type":"question","text":"What's our target list for alumni induction? We don't have the 8–10 locked yet.","upvotes":2,"created_at":"2026-04-09"},
-    {"id":"f-seed-3","okr_id":"fn-1","author":"Seed","type":"next_step","text":"Propose CEO outreach on top 3 stalled district conversations this week.","upvotes":4,"created_at":"2026-04-09"}
-  ]
+  "flags": []
 }

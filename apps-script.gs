@@ -1,117 +1,231 @@
 /**
- * TFA Washington OKR Dashboard — Apps Script backend
+ * TFA Washington OKR Dashboard — Apps Script Web App
  *
- * Deploy:
- * 1. Open the Google Sheet → Extensions → Apps Script
- * 2. Paste this file as Code.gs
- * 3. Deploy → New deployment → Web app
- *    - Execute as: Me
- *    - Who has access: Anyone with the link
- * 4. Copy the /exec URL and paste into index.html APPS_SCRIPT_URL
+ * Responsibilities:
+ *   - Serve objectives + KRs data to the dashboard as JSON (doGet)
+ *   - Accept inline edits from the dashboard and write them back to the sheet (doPost)
+ *   - Maintain an append-only audit log of every write
+ *   - Accept flags from the dashboard
  *
- * Endpoints:
- *   GET  ?mode=data      → returns full JSON for dashboard (org, functions, flags, config)
- *   POST { flag }         → appends a row to the Flags tab
- *   POST { upvote: id }   → increments upvote on a flag
- *   POST { snapshot: 1 }  → append monthly snapshot rows (run via trigger on 1st of month)
+ * Deploy as: Web app, Execute as "Me", Access "Anyone"
+ * When redeploying after code changes: use "Manage deployments" → edit existing deployment
+ * to keep the URL stable. If the URL changes, update APPS_SCRIPT_URL in index.html.
+ *
+ * Sheet layout: see sheet-structure.md. Primary tab is "OKRs". Audit tab is created
+ * automatically on first write.
  */
 
-const SHEET_ID = ''; // optional — leave blank to use the bound sheet
+const OKRS_TAB = 'OKRs';
+const AUDIT_TAB = 'Audit';
+const FLAGS_TAB = 'Flags';
+const CONFIG_TAB = 'Config';
 
-function ss(){ return SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActive(); }
+// ------------ entrypoints ------------
 
-function doGet(e){
+function doGet(e) {
   const mode = (e && e.parameter && e.parameter.mode) || 'data';
-  if(mode === 'data') return json(buildData());
-  return json({error:'unknown mode'});
+  try {
+    if (mode === 'data') return json(loadData());
+    return json({ error: 'unknown mode: ' + mode });
+  } catch (err) {
+    return json({ error: String(err) });
+  }
 }
 
-function doPost(e){
-  const body = JSON.parse(e.postData.contents || '{}');
-  if(body.flag || body.text){ return json(appendFlag(body)); }
-  if(body.upvote){ return json(upvoteFlag(body.upvote)); }
-  if(body.snapshot){ return json(snapshot()); }
-  return json({error:'unknown payload'});
+function doPost(e) {
+  let body;
+  try {
+    body = JSON.parse(e.postData.contents);
+  } catch (err) {
+    return json({ ok: false, error: 'bad json: ' + err });
+  }
+  try {
+    if (body.action === 'update') return json(handleUpdate(body));
+    if (body.action === 'flag')   return json(handleFlag(body));
+    return json({ ok: false, error: 'unknown action: ' + body.action });
+  } catch (err) {
+    return json({ ok: false, error: String(err) });
+  }
 }
 
-function json(obj){
-  return ContentService.createTextOutput(JSON.stringify(obj))
+function json(obj) {
+  return ContentService
+    .createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function rows(tab){
-  const sh = ss().getSheetByName(tab);
-  if(!sh) return [];
-  const values = sh.getDataRange().getValues();
-  if(values.length < 2) return [];
-  const headers = values[0].map(h => String(h).trim());
-  return values.slice(1).filter(r => r[0] !== '').map(r => {
-    const o = {}; headers.forEach((h,i)=> o[h] = r[i]); return o;
+// ------------ read ------------
+
+function loadData() {
+  const sheet = getSheet(OKRS_TAB);
+  if (!sheet) throw new Error('Missing sheet tab: ' + OKRS_TAB);
+  const values = sheet.getDataRange().getValues();
+  if (!values.length) return { config: loadConfig(), objectives: [], flags: loadFlags() };
+
+  const headers = values.shift();
+  const idx = headerIndex(headers);
+
+  const order = [];
+  const map = {};
+
+  values.forEach(row => {
+    const objId = String(row[idx.objective_id] || '').trim();
+    if (!objId) return;
+    if (!map[objId]) {
+      map[objId] = {
+        id: objId,
+        objective: row[idx.objective] || '',
+        status: row[idx.obj_status] || 'on_track',
+        status_note: row[idx.obj_status_note] || '',
+        next_step: row[idx.obj_next_step] || '',
+        krs: []
+      };
+      order.push(objId);
+    }
+    const krId = String(row[idx.kr_id] || '').trim();
+    if (krId) {
+      map[objId].krs.push({
+        id: krId,
+        key_result: row[idx.key_result] || '',
+        owner: row[idx.owner] || '',
+        target: Number(row[idx.target]) || 0,
+        current: Number(row[idx.current]) || 0,
+        unit: row[idx.unit] || '',
+        status_override: row[idx.kr_status_override] || '',
+        status_auto: row[idx.kr_status_auto] || 'on_track',
+        note: row[idx.kr_note] || '',
+        next_step: row[idx.kr_next_step] || ''
+      });
+    }
   });
-}
 
-function buildData(){
-  const config = {};
-  rows('Review Config').forEach(r => { config[r.key] = r.value; });
-  const org = rows('Org OKRs').map(normalizeOkr);
-  const functions = rows('Function OKRs').map(normalizeOkr);
-  const flags = rows('Flags').map(r => ({
-    id: r.flag_id, okr_id: r.okr_id, author: r.author_name,
-    type: r.type, text: r.text, upvotes: Number(r.upvotes)||0,
-    created_at: String(r.created_at).slice(0,10)
-  }));
-  // compute trends from snapshots
-  const snaps = rows('Monthly Snapshots');
-  const trendByOkr = {};
-  snaps.forEach(s => {
-    trendByOkr[s.okr_id] = trendByOkr[s.okr_id] || [];
-    trendByOkr[s.okr_id].push(Number(s.current_value)||0);
-  });
-  [...org, ...functions].forEach(o => { o.trend = trendByOkr[o.id] || [o.current]; });
-
-  return { config, org_okrs: org, function_okrs: functions, flags };
-}
-
-function normalizeOkr(r){
   return {
-    id: r.id,
-    function: r.function || '',
-    objective: r.objective,
-    key_result: r.key_result,
-    owner: r.owner,
-    current: Number(r.current)||0,
-    target: Number(r.target)||0,
-    unit: r.unit,
-    status: r.status || 'on_track',
-    rolls_up_to: r.rolls_up_to || '',
-    next_step: r.next_step || ''
+    config: loadConfig(),
+    objectives: order.map(id => map[id]),
+    flags: loadFlags()
   };
 }
 
-function appendFlag(f){
-  const sh = ss().getSheetByName('Flags');
-  const id = f.id || Utilities.getUuid();
-  sh.appendRow([id, new Date(), f.okr_id, f.author||'', '', f.type||'challenge', f.text||'', 1, false, '']);
-  return {ok:true, id};
+function loadConfig() {
+  const sheet = getSheet(CONFIG_TAB);
+  const fallback = { org_name: 'TFA Washington', next_review_date: '', top_flags_on_agenda: 5 };
+  if (!sheet) return fallback;
+  const rows = sheet.getDataRange().getValues();
+  const cfg = Object.assign({}, fallback);
+  rows.forEach(r => {
+    const k = String(r[0] || '').trim();
+    if (!k) return;
+    let v = r[1];
+    if (v instanceof Date) v = Utilities.formatDate(v, Session.getScriptTimeZone(), 'yyyy-MM-dd');
+    cfg[k] = v;
+  });
+  return cfg;
 }
 
-function upvoteFlag(id){
-  const sh = ss().getSheetByName('Flags');
-  const values = sh.getDataRange().getValues();
-  for(let i=1;i<values.length;i++){
-    if(values[i][0]===id){
-      sh.getRange(i+1, 8).setValue((Number(values[i][7])||0)+1);
-      return {ok:true};
+function loadFlags() {
+  const sheet = getSheet(FLAGS_TAB);
+  if (!sheet) return [];
+  const values = sheet.getDataRange().getValues();
+  if (values.length < 2) return [];
+  const headers = values.shift();
+  return values.filter(r => r[0]).map(r => {
+    const o = {};
+    headers.forEach((h, i) => { o[h] = r[i]; });
+    return o;
+  });
+}
+
+// ------------ write ------------
+
+function handleUpdate(body) {
+  const { level, id, field, value, editor } = body;
+  if (!level || !id || !field) throw new Error('missing level/id/field');
+
+  const sheet = getSheet(OKRS_TAB);
+  if (!sheet) throw new Error('Missing sheet tab: ' + OKRS_TAB);
+  const values = sheet.getDataRange().getValues();
+  const headers = values[0];
+  const idx = headerIndex(headers);
+
+  // Map dashboard field → sheet column
+  let colKey;
+  if (level === 'objective') {
+    colKey = ({ status: 'obj_status', status_note: 'obj_status_note', next_step: 'obj_next_step' })[field];
+  } else if (level === 'kr') {
+    colKey = ({ status_override: 'kr_status_override', note: 'kr_note', next_step: 'kr_next_step', current: 'current' })[field];
+  } else {
+    throw new Error('bad level: ' + level);
+  }
+  if (!colKey) throw new Error('bad field for level ' + level + ': ' + field);
+  if (idx[colKey] == null) throw new Error('missing column in sheet: ' + colKey);
+
+  // Find the row
+  let rowNum = -1;
+  for (let i = 1; i < values.length; i++) {
+    if (level === 'objective') {
+      if (String(values[i][idx.objective_id] || '').trim() === id) { rowNum = i + 1; break; }
+    } else {
+      if (String(values[i][idx.kr_id] || '').trim() === id) { rowNum = i + 1; break; }
     }
   }
-  return {ok:false,error:'not found'};
+  if (rowNum < 0) throw new Error('id not found: ' + id);
+
+  const col = idx[colKey] + 1;
+  const oldValue = sheet.getRange(rowNum, col).getValue();
+
+  // Type coercion
+  let newValue = value;
+  if (colKey === 'current') newValue = Number(value) || 0;
+  if (newValue == null) newValue = '';
+
+  sheet.getRange(rowNum, col).setValue(newValue);
+
+  // Stamp metadata
+  if (idx.last_updated != null) sheet.getRange(rowNum, idx.last_updated + 1).setValue(new Date());
+  if (idx.edited_by != null)    sheet.getRange(rowNum, idx.edited_by + 1).setValue(editor || '');
+
+  appendAudit({ editor: editor || '', level, id, field, old_value: oldValue, new_value: newValue });
+
+  return { ok: true, old_value: oldValue, new_value: newValue };
 }
 
-function snapshot(){
-  const sh = ss().getSheetByName('Monthly Snapshots');
-  const today = new Date();
-  [...rows('Org OKRs'), ...rows('Function OKRs')].forEach(o => {
-    sh.appendRow([today, o.id, o.current, o.status || '', '']);
-  });
-  return {ok:true};
+function handleFlag(body) {
+  const flag = body.flag || {};
+  let sheet = getSheet(FLAGS_TAB);
+  if (!sheet) {
+    sheet = SpreadsheetApp.getActive().insertSheet(FLAGS_TAB);
+    sheet.appendRow(['id', 'created_at', 'okr_id', 'author', 'type', 'text', 'upvotes', 'resolved']);
+  }
+  sheet.appendRow([
+    flag.id || ('f' + Date.now()),
+    flag.created_at || new Date().toISOString().slice(0, 10),
+    flag.okr_id || '',
+    flag.author || '',
+    flag.type || '',
+    flag.text || '',
+    Number(flag.upvotes) || 1,
+    false
+  ]);
+  return { ok: true };
+}
+
+function appendAudit(entry) {
+  let sheet = getSheet(AUDIT_TAB);
+  if (!sheet) {
+    sheet = SpreadsheetApp.getActive().insertSheet(AUDIT_TAB);
+    sheet.appendRow(['timestamp', 'editor', 'level', 'id', 'field', 'old_value', 'new_value']);
+  }
+  sheet.appendRow([new Date(), entry.editor, entry.level, entry.id, entry.field, entry.old_value, entry.new_value]);
+}
+
+// ------------ helpers ------------
+
+function getSheet(name) {
+  return SpreadsheetApp.getActive().getSheetByName(name);
+}
+
+function headerIndex(headers) {
+  const idx = {};
+  headers.forEach((h, i) => { idx[String(h).trim()] = i; });
+  return idx;
 }
