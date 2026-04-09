@@ -43,6 +43,14 @@
   .hero em{font-style:normal;color:var(--red)}
   .hero-sub{color:var(--gray);font-size:15px;max-width:780px;margin-bottom:32px;line-height:1.5}
 
+  /* Framing cards */
+  .framing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 24px;padding:24px;background:#fff;border:2px solid var(--navy)}
+  .framing-card h4{font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin:0 0 8px}
+  .framing-card p{font-size:13px;line-height:1.55;color:var(--black);margin:0}
+  .framing-card em{font-style:italic;color:var(--navy);font-weight:600}
+  .framing-card strong{color:var(--navy)}
+  @media (max-width:860px){.framing{grid-template-columns:1fr}}
+
   /* Directions */
   .directions{background:#fff;border:2px solid var(--navy);padding:20px 24px;margin:0 0 36px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
   .directions .head{display:flex;align-items:center;gap:10px;border-right:2px solid var(--cream);padding-right:20px}
@@ -211,6 +219,21 @@
 
     <div class="hero">Where are we <em>winning</em>.<br>Where are we <em>stuck</em>.</div>
     <div class="hero-sub">A live view of our objectives and the key results that inform them. Objective status is a judgment call by the team. Key results are the instruments; add, edit, or retire them in the sheet as context changes. Click any status, progress bar, note, or next step to update it directly.</div>
+
+    <div class="framing">
+      <div class="framing-card">
+        <h4>Why we use OKRs</h4>
+        <p>Objectives are the commitments we hold to each other. Key Results are how we'll know we got there. The commitment is durable. The measurements are instruments we refine as we learn.</p>
+      </div>
+      <div class="framing-card">
+        <h4>How we use this dashboard</h4>
+        <p>A <em>learning tool</em>, not an evaluation tool. Two reads, objective and KRs, let us see where the numbers say one thing and reality says another. The gap is the conversation.</p>
+      </div>
+      <div class="framing-card">
+        <h4>What you should do</h4>
+        <p>Before each review, open this page. Update the status on your objective, name what's driving it, and say the next move. If something is off track, <strong>raise a flag</strong>. The team works on what you surface.</p>
+      </div>
+    </div>
 
     <div class="directions">
       <div class="head"><h4>How to use this</h4></div>
