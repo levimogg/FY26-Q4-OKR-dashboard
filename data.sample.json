@@ -1,0 +1,59 @@
+{
+  "config": {
+    "org_name": "TFA Washington",
+    "next_review_date": "2026-05-07",
+    "updated": "2026-04-09"
+  },
+  "org_okrs": [
+    {
+      "id": "org-1",
+      "objective": "Place a full, mission-aligned 2026 corps",
+      "key_result": "Hire 120 corps members into DC/Baltimore placements",
+      "owner": "Placement Lead",
+      "current": 74,
+      "target": 120,
+      "unit": "CMs",
+      "status": "at_risk",
+      "next_step": "Escalate stalled district MOUs by 4/18",
+      "trend": [22, 38, 51, 63, 74]
+    },
+    {
+      "id": "org-2",
+      "objective": "Raise the revenue to sustain the work",
+      "key_result": "Close $4.2M in FY26 commitments",
+      "owner": "Development Lead",
+      "current": 3100000,
+      "target": 4200000,
+      "unit": "$",
+      "status": "on_track",
+      "next_step": "",
+      "trend": [800000, 1500000, 2100000, 2700000, 3100000]
+    },
+    {
+      "id": "org-3",
+      "objective": "Deepen corps impact in the classroom",
+      "key_result": "85% of CMs meet end-of-year student growth bar",
+      "owner": "Program Lead",
+      "current": 61,
+      "target": 85,
+      "unit": "%",
+      "status": "off_track",
+      "next_step": "Redesign mid-year coaching cycle — decision needed at May review",
+      "trend": [55, 58, 59, 60, 61]
+    }
+  ],
+  "function_okrs": [
+    {"id":"fn-1","function":"Recruitment","objective":"Build a qualified applicant pipeline","key_result":"1,800 completed applications","owner":"Recruitment","current":1420,"target":1800,"unit":"apps","status":"on_track","rolls_up_to":"org-1","next_step":"","trend":[300,600,900,1180,1420]},
+    {"id":"fn-2","function":"Placement","objective":"Secure district partnerships","key_result":"12 signed district MOUs","owner":"Placement","current":7,"target":12,"unit":"MOUs","status":"off_track","rolls_up_to":"org-1","next_step":"CEO outreach to 3 superintendents this week","trend":[2,3,5,6,7]},
+    {"id":"fn-3","function":"Development","objective":"Diversify revenue base","key_result":"$1.2M from new individual donors","owner":"Development","current":820000,"target":1200000,"unit":"$","status":"at_risk","rolls_up_to":"org-2","next_step":"Fast-track 5 prospect moves","trend":[150000,320000,520000,700000,820000]},
+    {"id":"fn-4","function":"Program","objective":"Strengthen coaching quality","key_result":"90% of CMs rate coaching as high-impact","owner":"Program","current":72,"target":90,"unit":"%","status":"at_risk","rolls_up_to":"org-3","next_step":"Pilot peer-coaching model in 3 regions","trend":[65,68,70,71,72]},
+    {"id":"fn-5","function":"Operations","objective":"Hit hiring cycle SLAs","key_result":"95% of offers sent within 10 days","owner":"Operations","current":93,"target":95,"unit":"%","status":"on_track","rolls_up_to":"org-1","next_step":"","trend":[80,85,88,91,93]},
+    {"id":"fn-6","function":"Comms","objective":"Own the local narrative","key_result":"24 earned media placements","owner":"Comms","current":11,"target":24,"unit":"placements","status":"off_track","rolls_up_to":"org-2","next_step":"Book editorial board meetings w/ Post + WBJ","trend":[2,4,6,9,11]}
+  ],
+  "flags": [
+    {"id":"f1","okr_id":"org-1","author":"M. Reyes","type":"challenge","text":"Two districts paused MOU talks pending new super. We need an escalation path.","upvotes":4,"created_at":"2026-04-03"},
+    {"id":"f2","okr_id":"fn-3","author":"J. Park","type":"question","text":"Should we reallocate event budget toward 1:1 prospect meetings?","upvotes":3,"created_at":"2026-04-05"},
+    {"id":"f3","okr_id":"org-3","author":"A. Khan","type":"next_step","text":"Propose we pull forward the coaching redesign from Q1 FY27 to now.","upvotes":6,"created_at":"2026-04-07"},
+    {"id":"f4","okr_id":"fn-6","author":"D. Liu","type":"challenge","text":"Editorial calendar is thin — need a hero story for May.","upvotes":2,"created_at":"2026-04-08"}
+  ]
+}
