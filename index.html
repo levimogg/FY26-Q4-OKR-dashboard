@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>TFA Washington — OKR Review</title>
+<title>TFA Washington · OKR Review</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -20,44 +20,46 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--cream);color:var(--black);font-family:'Poppins',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  a{color:var(--red);text-decoration:none}
   button{font-family:inherit}
-  .wrap{max-width:1280px;margin:0 auto;padding:32px 40px 80px}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 40px 80px}
+  .hidden{display:none !important}
 
   /* Header */
-  header{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:4px solid var(--navy);padding-bottom:20px;margin-bottom:36px;gap:24px;flex-wrap:wrap}
+  header{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:4px solid var(--navy);padding-bottom:20px;margin-bottom:32px;gap:24px;flex-wrap:wrap}
   .brand{display:flex;align-items:center;gap:16px}
   .brand .mark{width:56px;height:56px;background:var(--navy);color:var(--cream);display:grid;place-items:center;font-weight:900;font-size:22px;letter-spacing:1px;transform:rotate(-4deg)}
   .brand h1{font-weight:900;font-size:34px;letter-spacing:-.5px;color:var(--navy);margin:0;line-height:1}
   .brand .sub{color:var(--gray);font-size:13px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;margin-top:4px}
   .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-  .review-chip{background:var(--navy);color:var(--cream);padding:12px 18px;font-weight:600;font-size:13px;letter-spacing:.5px;text-transform:uppercase}
-  .review-chip strong{color:var(--blue);display:block;font-size:20px;letter-spacing:-.3px;text-transform:none;margin-top:2px}
+  .period-chip{background:var(--navy);color:var(--cream);padding:12px 18px;font-weight:600;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-align:right}
+  .period-chip strong{color:var(--blue);display:block;font-size:20px;letter-spacing:-.3px;margin-bottom:2px}
   .source-line{font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:flex;gap:10px;align-items:center}
+  .source-line .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--stone)}
+  .source-line.live .dot{background:#2E9E4B}
   .source-line a{cursor:pointer;color:var(--navy);border-bottom:1px dotted var(--navy)}
 
   /* Hero */
-  .hero{font-weight:900;font-size:64px;line-height:.9;color:var(--navy);margin:16px 0 8px;letter-spacing:-1.5px}
+  .hero{font-weight:900;font-size:60px;line-height:.9;color:var(--navy);margin:16px 0 10px;letter-spacing:-1.5px}
   .hero em{font-style:normal;color:var(--red)}
-  .hero-sub{color:var(--gray);font-size:15px;max-width:720px;margin-bottom:36px;line-height:1.5}
+  .hero-sub{color:var(--gray);font-size:15px;max-width:780px;margin-bottom:32px;line-height:1.5}
 
-  h2.section{font-weight:900;font-size:22px;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin:40px 0 18px;border-left:6px solid var(--red);padding-left:12px}
+  /* Directions */
+  .directions{background:#fff;border:2px solid var(--navy);padding:20px 24px;margin:0 0 36px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+  .directions .head{display:flex;align-items:center;gap:10px;border-right:2px solid var(--cream);padding-right:20px}
+  .directions h4{font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--red);margin:0;white-space:nowrap}
+  .directions ol{margin:0;padding-left:20px;font-size:13px;line-height:1.55;color:var(--black);display:grid;grid-template-columns:repeat(2,1fr);gap:4px 24px}
+  .directions ol li{padding-left:4px}
+  .directions ol li strong{color:var(--navy)}
+  @media (max-width:820px){
+    .directions{grid-template-columns:1fr;gap:14px}
+    .directions .head{border-right:none;border-bottom:2px solid var(--cream);padding-right:0;padding-bottom:12px}
+    .directions ol{grid-template-columns:1fr}
+  }
 
-  /* Framing cards */
-  .framing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:8px 0 36px;padding:24px;background:#fff;border:2px solid var(--navy)}
-  .framing-card h4{font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin:0 0 8px}
-  .framing-card p{font-size:13px;line-height:1.5;color:var(--black);margin:0}
-  .framing-card em{font-style:italic;color:var(--navy);font-weight:600}
-  .framing-card strong{color:var(--navy)}
-  @media (max-width:860px){.framing{grid-template-columns:1fr}}
-
-  /* Layout */
-  .layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px;margin-top:12px}
-  @media (max-width:1020px){.layout{grid-template-columns:1fr}}
-  .sidebar{align-self:start;position:sticky;top:20px}
+  h2.section{font-weight:900;font-size:22px;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin:8px 0 18px;border-left:6px solid var(--red);padding-left:12px}
 
   /* Bucket headers */
-  .bucket-head{font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin:24px 0 10px;display:flex;align-items:center;gap:12px}
+  .bucket-head{font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin:28px 0 12px;display:flex;align-items:center;gap:12px}
   .bucket-head .count{background:var(--navy);color:var(--cream);padding:3px 10px;font-size:11px}
   .bucket-head.attention{color:var(--red)}
   .bucket-head.attention .count{background:var(--red)}
@@ -65,176 +67,192 @@
   .bucket-head.watch .count{background:var(--amber)}
 
   /* Objective cards */
-  .obj-card{background:#fff;border:2px solid var(--navy);padding:20px 22px;margin-bottom:14px;position:relative}
+  .obj-card{background:#fff;border:2px solid var(--navy);padding:22px 26px;margin-bottom:16px;position:relative}
   .obj-card.s-at_risk{border-color:var(--amber)}
   .obj-card.s-off_track{border-color:var(--red)}
-  .obj-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px}
-  .obj-title{font-weight:900;font-size:20px;color:var(--navy);margin:0;line-height:1.2;flex:1;min-width:0}
+  .obj-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+  .obj-title{font-weight:900;font-size:21px;color:var(--navy);margin:0;line-height:1.2;flex:1;min-width:0}
 
-  /* Pills (status) */
-  .pill{display:inline-block;padding:5px 11px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;white-space:nowrap;user-select:none}
-  .pill.editable{cursor:pointer;position:relative}
+  /* Pills */
+  .pill{display:inline-block;padding:6px 12px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;white-space:nowrap;user-select:none;vertical-align:middle}
+  .pill.editable{cursor:pointer}
   .pill.editable:hover{outline:2px solid var(--navy);outline-offset:2px}
   .p-on_track{background:var(--navy)}
   .p-at_risk{background:var(--amber)}
   .p-off_track{background:var(--red)}
 
   /* Status picker */
-  .picker{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:2px solid var(--navy);z-index:20;display:flex;flex-direction:column;min-width:140px;box-shadow:0 4px 16px rgba(0,34,90,.25)}
+  .picker{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:2px solid var(--navy);z-index:40;display:flex;flex-direction:column;min-width:140px;box-shadow:0 6px 20px rgba(0,34,90,.3)}
   .picker button{background:#fff;border:none;border-bottom:1px solid var(--cream);padding:10px 12px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;color:var(--navy)}
   .picker button:last-child{border-bottom:none}
   .picker button:hover{background:var(--cream)}
-  .picker button .dot{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:middle}
-  .picker .dot.on_track{background:var(--navy)}
-  .picker .dot.at_risk{background:var(--amber)}
-  .picker .dot.off_track{background:var(--red)}
+  .picker button .sw{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:middle}
+  .picker .sw.on_track{background:var(--navy)}
+  .picker .sw.at_risk{background:var(--amber)}
+  .picker .sw.off_track{background:var(--red)}
 
-  /* Obj meta fields */
-  .obj-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 6px}
+  /* Objective meta fields (note, next step) */
+  .obj-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 4px}
   @media (max-width:720px){.obj-meta{grid-template-columns:1fr}}
-  .field{background:var(--cream);border-left:4px solid var(--navy);padding:10px 12px;min-height:54px}
+  .field{background:var(--cream);border-left:4px solid var(--navy);padding:10px 14px;min-height:60px}
   .field.next{border-left-color:var(--red)}
   .field .label{display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
   .field .label.next{color:var(--red)}
-  .field .value{font-size:13px;color:var(--black);line-height:1.4;word-wrap:break-word;cursor:text;display:block;min-height:18px}
+  .field .value{font-size:13px;color:var(--black);line-height:1.45;word-wrap:break-word;cursor:text;display:block;min-height:18px}
   .field .value.empty{color:var(--stone);font-style:italic}
   .field .value:hover{background:rgba(255,255,255,.6)}
-  .field .value[contenteditable="true"]{background:#fff;outline:2px solid var(--navy);outline-offset:0;padding:2px 4px;margin:-2px -4px}
+  .field .value[contenteditable="true"]{background:#fff;outline:2px solid var(--navy);outline-offset:0;padding:2px 4px;margin:-2px -4px;font-style:normal;color:var(--black)}
 
-  /* KR toggle */
-  .kr-toggle{background:transparent;border:none;color:var(--navy);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;padding:10px 0 4px;display:flex;align-items:center;gap:8px}
+  /* KR toggle and drawer */
+  .obj-actions{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--cream)}
+  .kr-toggle{background:transparent;border:none;color:var(--navy);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;padding:6px 0;display:flex;align-items:center;gap:8px}
   .kr-toggle:hover{color:var(--red)}
-  .kr-toggle .chev{transition:transform .15s}
+  .kr-toggle .chev{transition:transform .15s;display:inline-block}
   .kr-toggle.open .chev{transform:rotate(90deg)}
-  .kr-drawer{margin-top:10px;border-top:1px solid var(--stone);padding-top:14px;display:none}
+  .obj-flag{background:transparent;border:1px solid var(--stone);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 14px;cursor:pointer}
+  .obj-flag:hover{border-color:var(--red);color:var(--red)}
+  .kr-drawer{margin-top:14px;display:none}
   .kr-drawer.open{display:block}
 
-  /* KR table */
-  .kr-table{width:100%;border-collapse:collapse;font-size:12px}
-  .kr-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);padding:6px 8px;border-bottom:2px solid var(--stone)}
-  .kr-table td{padding:10px 8px;border-bottom:1px solid var(--cream);vertical-align:top}
-  .kr-table tr:last-child td{border-bottom:none}
-  .kr-text{font-size:13px;color:var(--black);line-height:1.4;max-width:320px}
-  .kr-owner{font-size:11px;color:var(--gray);white-space:nowrap}
-  .kr-progress{min-width:120px}
-  .kr-progress .nums{font-size:12px;color:var(--black);margin-bottom:4px;white-space:nowrap}
-  .kr-progress .nums .cur{font-weight:700;color:var(--navy);cursor:text;border-bottom:1px dotted var(--navy)}
-  .kr-progress .nums .cur[contenteditable="true"]{outline:2px solid var(--navy);background:#fff;padding:0 3px}
-  .kr-progress .bar{height:6px;background:var(--cream);border:1px solid var(--navy);position:relative}
-  .kr-progress .fill{height:100%;background:var(--blue)}
-  .s-at_risk .kr-progress .fill, .kr-progress .fill.at_risk{background:var(--amber-light)}
-  .s-off_track .kr-progress .fill, .kr-progress .fill.off_track{background:var(--red)}
-  .kr-note, .kr-next{font-size:12px;line-height:1.4;cursor:text;min-width:120px;max-width:200px;color:var(--black);word-wrap:break-word;min-height:16px}
-  .kr-note.empty, .kr-next.empty{color:var(--stone);font-style:italic}
-  .kr-note[contenteditable="true"], .kr-next[contenteditable="true"]{outline:2px solid var(--navy);background:#fff;padding:2px 4px;margin:-2px -4px}
-  .kr-flag{background:transparent;border:1px solid var(--stone);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 8px;cursor:pointer}
+  /* KR mini-cards inside drawer */
+  .kr-card{background:var(--cream);border:1px solid var(--stone);border-left:4px solid var(--blue);padding:16px 18px;margin-bottom:12px}
+  .kr-card.s-at_risk{border-left-color:var(--amber)}
+  .kr-card.s-off_track{border-left-color:var(--red)}
+  .kr-card:last-child{margin-bottom:0}
+
+  .kr-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px}
+  .kr-text{flex:1;font-size:14px;line-height:1.45;color:var(--black);font-weight:500;min-width:0}
+  .kr-owner{font-size:11px;color:var(--gray);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* KR progress block */
+  .kr-prog{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;margin:12px 0 10px}
+  .kr-bar-wrap{min-width:0}
+  .kr-bar{height:12px;background:#fff;border:1px solid var(--navy);position:relative;cursor:pointer;user-select:none}
+  .kr-bar:hover{outline:2px solid var(--blue);outline-offset:1px}
+  .kr-bar .fill{height:100%;background:var(--blue);pointer-events:none;transition:width .15s}
+  .kr-bar.s-at_risk .fill{background:var(--amber-light)}
+  .kr-bar.s-off_track .fill{background:var(--red)}
+  .kr-bar-hint{font-size:9px;color:var(--stone);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+  .kr-nums{font-size:13px;white-space:nowrap;color:var(--black)}
+  .kr-nums .cur{font-weight:700;color:var(--navy);cursor:text;border-bottom:1px dotted var(--navy);padding:0 2px}
+  .kr-nums .cur[contenteditable="true"]{outline:2px solid var(--navy);background:#fff}
+  .kr-nums .sep{color:var(--stone);margin:0 4px}
+
+  /* KR fields */
+  .kr-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  @media (max-width:720px){.kr-fields{grid-template-columns:1fr}}
+  .kr-field{background:#fff;border-left:3px solid var(--navy);padding:8px 12px;min-height:48px}
+  .kr-field.next{border-left-color:var(--red)}
+  .kr-field .label{display:block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-bottom:3px}
+  .kr-field .label.next{color:var(--red)}
+  .kr-field .value{font-size:12px;color:var(--black);line-height:1.4;cursor:text;display:block;min-height:16px;word-wrap:break-word}
+  .kr-field .value.empty{color:var(--stone);font-style:italic}
+  .kr-field .value[contenteditable="true"]{outline:2px solid var(--navy);padding:2px 4px;margin:-2px -4px;font-style:normal;color:var(--black)}
+
+  .kr-actions{display:flex;justify-content:flex-end;margin-top:10px}
+  .kr-flag{background:transparent;border:1px solid var(--stone);color:var(--navy);font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:5px 10px;cursor:pointer}
   .kr-flag:hover{border-color:var(--red);color:var(--red)}
-
-  .obj-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid var(--cream)}
-  .obj-flag{background:transparent;border:1px solid var(--stone);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 12px;cursor:pointer}
-  .obj-flag:hover{border-color:var(--red);color:var(--red)}
-
-  /* Sidebar / agenda */
-  .agenda{background:var(--navy);color:var(--cream);padding:22px}
-  .agenda h3{font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;color:var(--blue)}
-  .agenda .date{font-size:11px;color:var(--cream);opacity:.8;margin-bottom:18px}
-  .agenda .flag{padding:12px 0;border-bottom:1px solid rgba(255,238,212,.2)}
-  .agenda .flag:last-child{border-bottom:none}
-  .agenda .flag .meta{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--blue);margin-bottom:4px}
-  .agenda .flag .txt{font-size:13px;line-height:1.35}
-  .agenda .empty{font-size:12px;opacity:.7;font-style:italic}
-
-  .add-flag{margin-top:18px;background:var(--red);color:#fff;border:none;padding:14px 18px;font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:12px;width:100%;cursor:pointer}
-  .add-flag:hover{background:var(--maroon)}
 
   footer{margin-top:80px;color:var(--stone);font-size:11px;text-transform:uppercase;letter-spacing:1px;text-align:center}
 
-  /* Modal */
-  .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,34,90,.85);z-index:50;align-items:center;justify-content:center;padding:20px}
+  /* Modals */
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,34,90,.88);z-index:50;align-items:center;justify-content:center;padding:20px}
   .modal-bg.open{display:flex}
   .modal{background:var(--cream);padding:32px;max-width:520px;width:100%;border:3px solid var(--navy)}
   .modal h3{font-weight:900;color:var(--navy);margin:0 0 6px;font-size:22px}
-  .modal p{color:var(--gray);font-size:13px;margin:0 0 16px;line-height:1.4}
-  .modal label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--navy);font-weight:700;margin-top:12px}
+  .modal p{color:var(--gray);font-size:13px;margin:0 0 16px;line-height:1.45}
+  .modal label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--navy);font-weight:700;margin-top:14px}
   .modal select,.modal textarea,.modal input{width:100%;padding:10px;border:2px solid var(--navy);background:#fff;font-family:inherit;font-size:14px;margin-top:4px}
-  .modal textarea{min-height:90px;resize:vertical}
-  .modal .row{display:flex;gap:10px;margin-top:20px}
+  .modal textarea{min-height:100px;resize:vertical}
+  .modal .row{display:flex;gap:10px;margin-top:22px}
   .modal button{flex:1;padding:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:12px;border:none;cursor:pointer}
   .modal .submit{background:var(--red);color:#fff}
   .modal .submit:hover{background:var(--maroon)}
   .modal .cancel{background:transparent;border:2px solid var(--navy);color:var(--navy)}
+  .modal .flag-target{background:#fff;border:2px solid var(--navy);padding:10px 12px;margin-top:4px;font-size:13px;line-height:1.4;color:var(--navy);font-weight:600}
+  .modal .flag-target .kind{display:block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+  .modal .error{color:var(--red);font-size:12px;margin-top:8px;font-weight:600;display:none}
+  .modal .error.show{display:block}
 
   /* Toast */
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:var(--cream);padding:12px 20px;font-size:13px;font-weight:600;letter-spacing:.5px;opacity:0;pointer-events:none;transition:opacity .2s, transform .2s;z-index:100;border:2px solid var(--blue)}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   .toast.error{background:var(--red);border-color:var(--maroon)}
+
+  /* Gate (blocks content until unlocked) */
+  .app-gate{display:none}
+  body.locked .app-gate{display:none}
+  body.locked #app{display:none}
 </style>
 </head>
-<body>
-<div class="wrap">
+<body class="locked">
 
-  <header>
-    <div class="brand">
-      <div class="mark">TFA</div>
-      <div>
-        <h1>TFA Washington</h1>
-        <div class="sub">The Power of Us · OKR Review</div>
+<div id="app">
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <div class="mark">TFA</div>
+        <div>
+          <h1>TFA Washington</h1>
+          <div class="sub">The Power of Us · OKR Review</div>
+        </div>
       </div>
-    </div>
-    <div class="header-right">
-      <div class="review-chip">Next review<strong id="review-date">—</strong></div>
-      <div class="source-line">
-        <span id="source-tag">loading…</span>
-        <span>·</span>
-        <a id="editor-link" onclick="openNameModal()">set name</a>
+      <div class="header-right">
+        <div class="period-chip"><strong>FY26 Q4</strong>March 1 to May 31</div>
+        <div class="source-line" id="source-line">
+          <span class="dot"></span>
+          <span id="source-tag">loading…</span>
+          <span>·</span>
+          <a id="editor-link" onclick="openNameModal()">set name</a>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <div class="hero">Where are we <em>winning</em>.<br>Where are we <em>stuck</em>.</div>
-  <div class="hero-sub">A live view of our objectives and the key results that inform them. Status on each objective is a judgment call by the team. KRs are the instruments — we can add, edit, or retire them as context changes. Click any status, note, or next step to update it directly.</div>
+    <div class="hero">Where are we <em>winning</em>.<br>Where are we <em>stuck</em>.</div>
+    <div class="hero-sub">A live view of our objectives and the key results that inform them. Objective status is a judgment call by the team. Key results are the instruments; add, edit, or retire them in the sheet as context changes. Click any status, progress bar, note, or next step to update it directly.</div>
 
-  <div class="framing">
-    <div class="framing-card">
-      <h4>Why we use OKRs</h4>
-      <p>Objectives are the commitments we hold to each other. Key Results are how we'll know we got there. The commitment is durable; the measurements are instruments we refine.</p>
+    <div class="directions">
+      <div class="head"><h4>How to use this</h4></div>
+      <ol>
+        <li>Find a card you're responsible for.</li>
+        <li>Click the pill to mark it on track, at risk, or off track.</li>
+        <li>Open the key results underneath. Click the bar to update progress.</li>
+        <li>Add a note on why, and name the next move.</li>
+        <li>Flag anything the team needs to weigh in on.</li>
+      </ol>
     </div>
-    <div class="framing-card">
-      <h4>How we use this dashboard</h4>
-      <p>A <em>learning tool</em>, not an evaluation tool. Two reads, objective and KRs, let us see where the numbers say one thing and the reality says another. The gap is the conversation.</p>
-    </div>
-    <div class="framing-card">
-      <h4>What you should do</h4>
-      <p>Before each review, open this page. Update the status on your objective, note what's driving it, name the next move. If something's off track or you see a problem coming, <strong>raise a flag</strong>. Top flags shape the agenda.</p>
+
+    <h2 class="section">Objectives</h2>
+    <div id="obj-buckets"></div>
+
+    <footer>The Power of Us · A celebration of purpose, people, and progress.</footer>
+  </div>
+</div>
+
+<!-- Unlock modal: password + name in one step -->
+<div class="modal-bg open" id="unlock-modal">
+  <div class="modal">
+    <h3>TFA Washington · OKR Review</h3>
+    <p>Enter the team password and your name to get started. Your name gets stamped on every update so the audit log knows who made what call.</p>
+    <label>Team password</label>
+    <input id="unlock-password" type="password" placeholder="••••" autocomplete="off" />
+    <label>Your name</label>
+    <input id="unlock-name" placeholder="First Last" />
+    <div class="error" id="unlock-error">Wrong password. Try again.</div>
+    <div class="row">
+      <button class="submit" onclick="tryUnlock()">Unlock</button>
     </div>
   </div>
-
-  <div class="layout">
-    <main>
-      <h2 class="section">Objectives</h2>
-      <div id="obj-buckets"></div>
-    </main>
-
-    <aside class="sidebar">
-      <div class="agenda">
-        <h3>Proposed Agenda</h3>
-        <div class="date" id="agenda-date">Next review</div>
-        <div id="agenda-flags"></div>
-      </div>
-      <button class="add-flag" onclick="openFlagModal()">+ Add a Flag</button>
-    </aside>
-  </div>
-
-  <footer>The Power of Us — A celebration of purpose, people, and progress.</footer>
 </div>
 
 <!-- Flag modal -->
 <div class="modal-bg" id="flag-modal">
   <div class="modal">
     <h3>Raise a Flag</h3>
-    <p>Challenge, question, or proposed next step. Surfaces on the dashboard and feeds the review agenda.</p>
-    <label>Against which objective or KR?</label>
-    <select id="f-okr"></select>
+    <p>Challenge, question, or proposed next step. Anchored to the card you clicked.</p>
+    <label>Flagging</label>
+    <div class="flag-target" id="flag-target"><span class="kind">Target</span><span id="flag-target-text">—</span></div>
     <label>Type</label>
     <select id="f-type">
       <option value="challenge">Challenge</option>
@@ -250,14 +268,15 @@
   </div>
 </div>
 
-<!-- Name modal -->
+<!-- Name-only modal (for changing your name later) -->
 <div class="modal-bg" id="name-modal">
   <div class="modal">
-    <h3>Who's editing?</h3>
-    <p>We track who makes each update so the team has a clear audit trail. Your name is stored in this browser only.</p>
+    <h3>Change your name</h3>
+    <p>Updates the name stamped on future edits. Stored in this browser only.</p>
     <label>Your name</label>
     <input id="editor-name-input" placeholder="First Last" />
     <div class="row">
+      <button class="cancel" onclick="closeNameModal()">Cancel</button>
       <button class="submit" onclick="saveEditorName()">Save</button>
     </div>
   </div>
@@ -269,22 +288,77 @@
 // ===== Config =====
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzQYnC26OpfNd9rJ1gB8d3AYuGpY-wdEo7FAsJLetnBC-GgAZu-UbxyTyNsMfy5JltK/exec';
 const FALLBACK_URL = 'data.json';
+const TEAM_PASSWORD = '1234';
 
 // ===== State =====
 let DATA = null;
-let LIVE = false; // true if we loaded from Apps Script and can write back
+let LIVE = false;
 let editorName = localStorage.getItem('tfa_editor_name') || '';
+let flagContext = null;
+
+// ===== Unlock gate =====
+function tryUnlock(){
+  const pw = document.getElementById('unlock-password').value.trim();
+  const name = document.getElementById('unlock-name').value.trim();
+  const errEl = document.getElementById('unlock-error');
+  if (pw !== TEAM_PASSWORD) {
+    errEl.textContent = 'Wrong password. Try again.';
+    errEl.classList.add('show');
+    return;
+  }
+  if (!name) {
+    errEl.textContent = 'Name is required.';
+    errEl.classList.add('show');
+    return;
+  }
+  errEl.classList.remove('show');
+  editorName = name;
+  localStorage.setItem('tfa_editor_name', name);
+  localStorage.setItem('tfa_unlocked', '1');
+  document.getElementById('unlock-modal').classList.remove('open');
+  document.body.classList.remove('locked');
+  document.getElementById('app').style.display = '';
+  document.getElementById('editor-link').textContent = editorName;
+  load();
+}
+
+function showUnlockModal(){
+  document.body.classList.add('locked');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('unlock-modal').classList.add('open');
+  if (editorName) document.getElementById('unlock-name').value = editorName;
+  setTimeout(() => document.getElementById('unlock-password').focus(), 80);
+}
+
+// Init gate
+if (localStorage.getItem('tfa_unlocked') === '1' && editorName) {
+  document.body.classList.remove('locked');
+  document.getElementById('unlock-modal').classList.remove('open');
+  document.getElementById('app').style.display = '';
+  document.getElementById('editor-link').textContent = editorName;
+  load();
+} else {
+  showUnlockModal();
+}
+
+// Enter key in unlock modal
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  if (document.getElementById('unlock-modal').classList.contains('open')) {
+    e.preventDefault();
+    tryUnlock();
+  }
+});
 
 // ===== Load =====
 async function load(){
-  // Try live Apps Script first. Detect new shape ({objectives: [...]}).
   try {
     const res = await fetch(APPS_SCRIPT_URL + '?mode=data', {redirect:'follow'});
     const json = await res.json();
     if (json && Array.isArray(json.objectives)) {
       DATA = json;
       LIVE = true;
-      setSourceTag('Live · Google Sheet');
+      setSourceTag('Live · Google Sheet', true);
     } else {
       throw new Error('old shape');
     }
@@ -293,23 +367,29 @@ async function load(){
       const res = await fetch(FALLBACK_URL);
       DATA = await res.json();
       LIVE = false;
-      setSourceTag('Snapshot · Apps Script not redeployed yet');
+      setSourceTag('Snapshot · Apps Script not redeployed', false);
     } catch(err) {
-      setSourceTag('Load failed');
+      setSourceTag('Load failed', false);
       return;
     }
   }
   render();
 }
 
-function setSourceTag(txt){
+function setSourceTag(txt, live){
   document.getElementById('source-tag').textContent = txt;
+  document.getElementById('source-line').classList.toggle('live', !!live);
 }
 
 // ===== Utilities =====
 function fmt(n, u){
-  if(u === '$') return '$' + (n >= 1e6 ? (n/1e6).toFixed(1) + 'M' : (n/1e3).toFixed(0) + 'K');
-  if(u === '%') return n + '%';
+  if(u === '$') return '$' + (n >= 1e6 ? (n/1e6).toFixed(1) + 'M' : n >= 1000 ? (n/1e3).toFixed(0) + 'K' : Math.round(n));
+  if(u === '%') return Math.round(n) + '%';
+  return Number(n).toLocaleString();
+}
+function fmtNum(n, u){
+  if (u === '$') return '$' + Number(n).toLocaleString();
+  if (u === '%') return Math.round(n) + '%';
   return Number(n).toLocaleString();
 }
 function pct(c, t){ if(!t) return 0; return Math.min(100, Math.round((c/t)*100)); }
@@ -319,16 +399,7 @@ function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&
 
 // ===== Render =====
 function render(){
-  if (DATA.config && DATA.config.next_review_date) {
-    const d = new Date(DATA.config.next_review_date);
-    if (!isNaN(d)) {
-      document.getElementById('review-date').textContent = d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-      document.getElementById('agenda-date').textContent = 'For ' + d.toLocaleDateString('en-US',{month:'long',day:'numeric'});
-    }
-  }
   renderBuckets();
-  renderAgenda();
-  populateFlagSelect();
 }
 
 function renderBuckets(){
@@ -336,6 +407,13 @@ function renderBuckets(){
   const heads = {off_track:'Attention Needed', at_risk:'Watch', on_track:'Humming'};
   const classes = {off_track:'attention', at_risk:'watch', on_track:''};
   const container = document.getElementById('obj-buckets');
+
+  // Preserve which objectives are expanded
+  const expanded = new Set();
+  container.querySelectorAll('.obj-card').forEach(c => {
+    if (c.querySelector('.kr-drawer.open')) expanded.add(c.dataset.objId);
+  });
+
   container.innerHTML = '';
   order.forEach(status => {
     const objs = DATA.objectives.filter(o => (o.status || 'on_track') === status);
@@ -344,7 +422,14 @@ function renderBuckets(){
     head.className = 'bucket-head ' + classes[status];
     head.innerHTML = `${heads[status]} <span class="count">${objs.length}</span>`;
     container.appendChild(head);
-    objs.forEach(o => container.appendChild(renderObjectiveCard(o)));
+    objs.forEach(o => {
+      const card = renderObjectiveCard(o);
+      if (expanded.has(o.id)) {
+        card.querySelector('.kr-toggle').classList.add('open');
+        card.querySelector('.kr-drawer').classList.add('open');
+      }
+      container.appendChild(card);
+    });
   });
 }
 
@@ -365,7 +450,7 @@ function renderObjectiveCard(o){
     </div>
     <div class="obj-meta">
       <div class="field">
-        <span class="label">Status note — why</span>
+        <span class="label">Status note · why</span>
         <span class="value ${noteEmpty?'empty':''}"
               data-level="objective" data-id="${o.id}" data-field="status_note"
               data-placeholder="click to add context…">${noteEmpty?'click to add context…':esc(o.status_note)}</span>
@@ -377,124 +462,88 @@ function renderObjectiveCard(o){
               data-placeholder="click to add the move…">${nextEmpty?'click to add the move…':esc(o.next_step)}</span>
       </div>
     </div>
-    <button class="kr-toggle" onclick="toggleKRs(this)">
-      <span class="chev">▸</span> ${o.krs.length} key result${o.krs.length===1?'':'s'}
-    </button>
-    <div class="kr-drawer">${renderKRTable(o)}</div>
-    <div class="obj-footer">
+    <div class="obj-actions">
+      <button class="kr-toggle" onclick="toggleKRs(this)">
+        <span class="chev">▸</span> ${o.krs.length} key result${o.krs.length===1?'':'s'}
+      </button>
       <button class="obj-flag" onclick="openFlagModalFor('${o.id}')">Flag this objective</button>
     </div>
+    <div class="kr-drawer">${renderKRCards(o)}</div>
   `;
   return card;
 }
 
-function renderKRTable(o){
-  if (!o.krs.length) return '<p style="font-size:12px;color:var(--stone);font-style:italic">No active KRs. Add rows in the sheet under objective_id "' + o.id + '".</p>';
-  const rows = o.krs.map(kr => {
+function renderKRCards(o){
+  if (!o.krs.length) return '<p style="font-size:12px;color:var(--stone);font-style:italic;margin:12px 0 0">No active key results. Add rows in the sheet under objective_id "' + o.id + '".</p>';
+  return o.krs.map(kr => {
     const st = krStatus(kr);
     const p = pct(kr.current, kr.target);
     const noteEmpty = !kr.note;
     const nextEmpty = !kr.next_step;
     return `
-      <tr>
-        <td><div class="kr-text">${esc(kr.key_result)}</div></td>
-        <td><div class="kr-owner">${esc(kr.owner)}</div></td>
-        <td>
-          <div class="kr-progress">
-            <div class="nums">
-              <span class="cur" data-level="kr" data-id="${kr.id}" data-field="current">${fmtNum(kr.current, kr.unit)}</span>
-              / ${fmt(kr.target, kr.unit)}
-            </div>
-            <div class="bar"><div class="fill ${st}" style="width:${p}%"></div></div>
+      <div class="kr-card s-${st}" data-kr-id="${kr.id}">
+        <div class="kr-head">
+          <div class="kr-text">
+            ${esc(kr.key_result)}
+            <div class="kr-owner">Owner: ${esc(kr.owner)}</div>
           </div>
-        </td>
-        <td>
           <span class="pill editable p-${st}"
                 data-level="kr" data-id="${kr.id}" data-field="status_override">${statusLabel(st)}</span>
-        </td>
-        <td><div class="kr-note ${noteEmpty?'empty':''}"
-                 data-level="kr" data-id="${kr.id}" data-field="note"
-                 data-placeholder="—">${noteEmpty?'—':esc(kr.note)}</div></td>
-        <td><div class="kr-next ${nextEmpty?'empty':''}"
-                 data-level="kr" data-id="${kr.id}" data-field="next_step"
-                 data-placeholder="—">${nextEmpty?'—':esc(kr.next_step)}</div></td>
-        <td><button class="kr-flag" onclick="openFlagModalFor('${kr.id}')">Flag</button></td>
-      </tr>
+        </div>
+        <div class="kr-prog">
+          <div class="kr-bar-wrap">
+            <div class="kr-bar s-${st}" data-kr-id="${kr.id}" data-target="${kr.target}">
+              <div class="fill" style="width:${p}%"></div>
+            </div>
+            <div class="kr-bar-hint">Click the bar to set progress</div>
+          </div>
+          <div class="kr-nums">
+            <span class="cur" data-level="kr" data-id="${kr.id}" data-field="current">${fmtNum(kr.current, kr.unit)}</span>
+            <span class="sep">/</span>
+            ${fmt(kr.target, kr.unit)}
+          </div>
+        </div>
+        <div class="kr-fields">
+          <div class="kr-field">
+            <span class="label">Note</span>
+            <span class="value ${noteEmpty?'empty':''}"
+                  data-level="kr" data-id="${kr.id}" data-field="note"
+                  data-placeholder="click to add context…">${noteEmpty?'click to add context…':esc(kr.note)}</span>
+          </div>
+          <div class="kr-field next">
+            <span class="label next">Next step</span>
+            <span class="value ${nextEmpty?'empty':''}"
+                  data-level="kr" data-id="${kr.id}" data-field="next_step"
+                  data-placeholder="click to add the move…">${nextEmpty?'click to add the move…':esc(kr.next_step)}</span>
+          </div>
+        </div>
+        <div class="kr-actions">
+          <button class="kr-flag" onclick="openFlagModalFor('${kr.id}')">Flag this KR</button>
+        </div>
+      </div>
     `;
   }).join('');
-  return `
-    <table class="kr-table">
-      <thead><tr><th>Key Result</th><th>Owner</th><th>Progress</th><th>Status</th><th>Note</th><th>Next Step</th><th></th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table>
-  `;
-}
-
-function fmtNum(n, u){
-  if (u === '$') return '$' + Number(n).toLocaleString();
-  if (u === '%') return n + '%';
-  return Number(n).toLocaleString();
 }
 
 function toggleKRs(btn){
   btn.classList.toggle('open');
-  const drawer = btn.nextElementSibling;
+  const drawer = btn.closest('.obj-card').querySelector('.kr-drawer');
   drawer.classList.toggle('open');
 }
 
-function renderAgenda(){
-  const flags = DATA.flags || [];
-  const top = [...flags].sort((a,b) => (b.upvotes||0) - (a.upvotes||0)).slice(0, 5);
-  const el = document.getElementById('agenda-flags');
-  el.innerHTML = '';
-  if (!top.length) {
-    el.innerHTML = '<div class="empty">No flags yet. Raise one to shape the agenda.</div>';
-    return;
-  }
-  top.forEach(f => {
-    const div = document.createElement('div');
-    div.className = 'flag';
-    div.innerHTML = `
-      <div class="meta">${(f.type||'').replace('_',' ')} · ${esc((f.okr_id||'').slice(0,40))}</div>
-      <div class="txt">${esc(f.text||'')}</div>
-    `;
-    el.appendChild(div);
-  });
-}
-
-function populateFlagSelect(){
-  const sel = document.getElementById('f-okr');
-  sel.innerHTML = '';
-  DATA.objectives.forEach(o => {
-    const optO = document.createElement('option');
-    optO.value = o.id;
-    optO.textContent = 'OBJ: ' + o.objective.slice(0, 70);
-    sel.appendChild(optO);
-    o.krs.forEach(kr => {
-      const optKr = document.createElement('option');
-      optKr.value = kr.id;
-      optKr.textContent = '  KR: ' + kr.key_result.slice(0, 80);
-      sel.appendChild(optKr);
-    });
-  });
-}
-
-// ===== Inline editing =====
-
-// Close any open pickers on outside click
+// ===== Inline editing: status pills =====
 document.addEventListener('click', (e) => {
+  // Close open pickers on outside click
   const pickers = document.querySelectorAll('.picker');
   pickers.forEach(p => {
     if (!p.contains(e.target) && !e.target.classList.contains('pill')) p.remove();
   });
 });
 
-// Click handler for status pills
 document.addEventListener('click', (e) => {
   const pill = e.target.closest('.pill.editable');
   if (!pill) return;
   e.stopPropagation();
-  // Remove any open picker
   document.querySelectorAll('.picker').forEach(p => p.remove());
   openStatusPicker(pill);
 });
@@ -503,73 +552,58 @@ function openStatusPicker(pillEl){
   const level = pillEl.dataset.level;
   const id = pillEl.dataset.id;
   const field = pillEl.dataset.field;
-  const current = pillEl.textContent.trim().toLowerCase().replace(' ', '_');
 
   const picker = document.createElement('div');
   picker.className = 'picker';
-  const opts = [
+  [
     {key:'on_track', label:'On Track'},
     {key:'at_risk',  label:'At Risk'},
     {key:'off_track',label:'Off Track'}
-  ];
-  opts.forEach(opt => {
+  ].forEach(opt => {
     const b = document.createElement('button');
-    b.innerHTML = `<span class="dot ${opt.key}"></span>${opt.label}`;
-    b.onclick = (e) => {
-      e.stopPropagation();
+    b.innerHTML = `<span class="sw ${opt.key}"></span>${opt.label}`;
+    b.onclick = (ev) => {
+      ev.stopPropagation();
       commitStatus(pillEl, level, id, field, opt.key);
       picker.remove();
     };
     picker.appendChild(b);
   });
-  // Position relative to parent
   pillEl.style.position = 'relative';
   pillEl.appendChild(picker);
 }
 
 function commitStatus(pillEl, level, id, field, newStatus){
-  if (!ensureName()) return;
-
-  // Update DOM
-  pillEl.className = 'pill editable p-' + newStatus;
-  pillEl.textContent = statusLabel(newStatus);
-
-  // Update local DATA
   if (level === 'objective') {
     const o = DATA.objectives.find(x => x.id === id);
     if (o) o.status = newStatus;
-    // Re-render buckets (objective may have moved between buckets)
-    renderBuckets();
   } else {
     DATA.objectives.forEach(o => {
       const kr = o.krs.find(x => x.id === id);
       if (kr) kr.status_override = newStatus;
     });
-    // Re-render the card containing this KR (simplest: re-render all)
-    renderBuckets();
   }
-
+  renderBuckets();
   pushUpdate({level, id, field, value:newStatus});
 }
 
-// Click-to-edit text values
+// ===== Inline editing: text fields =====
 document.addEventListener('click', (e) => {
-  const val = e.target.closest('.value, .kr-note, .kr-next, .kr-progress .cur');
+  const val = e.target.closest('[data-field]');
   if (!val) return;
+  if (val.classList.contains('pill')) return;
+  if (val.classList.contains('kr-bar')) return;
   if (val.getAttribute('contenteditable') === 'true') return;
-  if (!val.dataset.field) return;
   startTextEdit(val);
 });
 
 function startTextEdit(el){
-  if (!ensureName()) return;
   const wasEmpty = el.classList.contains('empty');
   if (wasEmpty) el.textContent = '';
   el.classList.remove('empty');
   el.setAttribute('contenteditable', 'true');
   el.focus();
 
-  // Select all
   const range = document.createRange();
   range.selectNodeContents(el);
   const sel = window.getSelection();
@@ -583,45 +617,45 @@ function startTextEdit(el){
     el.removeEventListener('blur', finish);
     el.removeEventListener('keydown', onKey);
     const newVal = el.textContent.trim();
+    const {level, id, field} = el.dataset;
+
+    if (field === 'current') {
+      const num = Number(newVal.replace(/[^0-9.\-]/g, '')) || 0;
+      const kr = findKR(id);
+      if (kr) {
+        kr.current = num;
+        el.textContent = fmtNum(num, kr.unit);
+        const barCard = el.closest('.kr-card');
+        const fill = barCard ? barCard.querySelector('.kr-bar .fill') : null;
+        if (fill) fill.style.width = pct(num, kr.target) + '%';
+      }
+      if (num !== Number(original.replace(/[^0-9.\-]/g, ''))) {
+        pushUpdate({level, id, field, value: num});
+      }
+      return;
+    }
+
     if (newVal === original.trim()) {
-      // No change; restore empty state if applicable
       if (!newVal) {
-        el.textContent = el.dataset.placeholder || '—';
+        el.textContent = el.dataset.placeholder || '…';
         el.classList.add('empty');
       }
       return;
     }
-    const {level, id, field} = el.dataset;
-    // Coerce current (numeric) if needed
-    let outVal = newVal;
-    if (field === 'current') {
-      outVal = Number(newVal.replace(/[^0-9.\-]/g, '')) || 0;
-      // Reformat display
-      const kr = findKR(id);
-      if (kr) {
-        kr.current = outVal;
-        el.textContent = fmtNum(outVal, kr.unit);
-        // Update the bar in the same row
-        const bar = el.closest('.kr-progress').querySelector('.fill');
-        if (bar) bar.style.width = pct(outVal, kr.target) + '%';
-      }
+    if (!newVal) {
+      el.textContent = el.dataset.placeholder || '…';
+      el.classList.add('empty');
     } else {
-      if (!newVal) {
-        el.textContent = el.dataset.placeholder || '—';
-        el.classList.add('empty');
-      } else {
-        el.textContent = newVal;
-      }
-      // Update local DATA
-      if (level === 'objective') {
-        const o = DATA.objectives.find(x => x.id === id);
-        if (o) o[field] = newVal;
-      } else {
-        const kr = findKR(id);
-        if (kr) kr[field] = newVal;
-      }
+      el.textContent = newVal;
     }
-    pushUpdate({level, id, field, value: outVal});
+    if (level === 'objective') {
+      const o = DATA.objectives.find(x => x.id === id);
+      if (o) o[field] = newVal;
+    } else {
+      const kr = findKR(id);
+      if (kr) kr[field] = newVal;
+    }
+    pushUpdate({level, id, field, value: newVal});
   };
 
   const onKey = (ev) => {
@@ -641,10 +675,31 @@ function findKR(krId){
   return null;
 }
 
+// ===== Inline editing: progress bar click =====
+document.addEventListener('click', (e) => {
+  const bar = e.target.closest('.kr-bar');
+  if (!bar) return;
+  const krId = bar.dataset.krId;
+  const target = Number(bar.dataset.target) || 0;
+  if (!target) return;
+  const rect = bar.getBoundingClientRect();
+  const frac = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  const newVal = Math.round(target * frac * 100) / 100;
+  const kr = findKR(krId);
+  if (!kr) return;
+  kr.current = newVal;
+  const fill = bar.querySelector('.fill');
+  if (fill) fill.style.width = (frac * 100) + '%';
+  const card = bar.closest('.kr-card');
+  const curEl = card ? card.querySelector('.cur') : null;
+  if (curEl) curEl.textContent = fmtNum(newVal, kr.unit);
+  pushUpdate({level:'kr', id:krId, field:'current', value:newVal});
+});
+
 // ===== Write-back =====
 async function pushUpdate(payload){
   if (!LIVE) {
-    toast('Snapshot mode — change not saved to sheet', true);
+    toast('Snapshot mode · change not saved to sheet', true);
     return;
   }
   try {
@@ -655,59 +710,68 @@ async function pushUpdate(payload){
     });
     toast('Saved ✓');
   } catch(e) {
-    toast('Save failed — check sheet', true);
+    toast('Save failed · check sheet', true);
   }
 }
 
-// ===== Editor name =====
-function ensureName(){
-  if (!editorName) { openNameModal(); return false; }
-  return true;
-}
+// ===== Name modal (for changing name later) =====
 function openNameModal(){
   document.getElementById('editor-name-input').value = editorName || '';
   document.getElementById('name-modal').classList.add('open');
   setTimeout(() => document.getElementById('editor-name-input').focus(), 50);
+}
+function closeNameModal(){
+  document.getElementById('name-modal').classList.remove('open');
 }
 function saveEditorName(){
   const n = document.getElementById('editor-name-input').value.trim();
   if (!n) return;
   editorName = n;
   localStorage.setItem('tfa_editor_name', n);
-  document.getElementById('name-modal').classList.remove('open');
+  closeNameModal();
   document.getElementById('editor-link').textContent = editorName;
   toast('Hi, ' + editorName.split(' ')[0]);
 }
 
 // ===== Flag modal =====
-function openFlagModal(){
-  document.getElementById('flag-modal').classList.add('open');
-}
 function openFlagModalFor(id){
-  document.getElementById('f-okr').value = id;
-  openFlagModal();
+  let ctx = null;
+  for (const o of DATA.objectives) {
+    if (o.id === id) { ctx = {id, kind:'OBJECTIVE', text:o.objective}; break; }
+    for (const kr of o.krs) {
+      if (kr.id === id) { ctx = {id, kind:'KEY RESULT (under ' + o.objective.slice(0,50) + ')', text:kr.key_result}; break; }
+    }
+    if (ctx) break;
+  }
+  if (!ctx) return;
+  flagContext = ctx;
+  document.querySelector('#flag-target .kind').textContent = ctx.kind;
+  document.getElementById('flag-target-text').textContent = ctx.text;
+  document.getElementById('f-text').value = '';
+  document.getElementById('f-type').value = 'challenge';
+  document.getElementById('flag-modal').classList.add('open');
+  setTimeout(() => document.getElementById('f-text').focus(), 50);
 }
 function closeFlagModal(){
   document.getElementById('flag-modal').classList.remove('open');
+  flagContext = null;
 }
 async function submitFlag(){
-  if (!ensureName()) return;
+  if (!flagContext) { closeFlagModal(); return; }
+  const text = document.getElementById('f-text').value.trim();
+  if (!text) { alert('Flag text required.'); return; }
   const flag = {
     id: 'f' + Date.now(),
-    okr_id: document.getElementById('f-okr').value,
+    okr_id: flagContext.id,
     type: document.getElementById('f-type').value,
     author: editorName,
-    text: document.getElementById('f-text').value,
+    text: text,
     upvotes: 1,
     created_at: new Date().toISOString().slice(0,10)
   };
-  if (!flag.text) { alert('Flag text required.'); return; }
   DATA.flags = DATA.flags || [];
   DATA.flags.push(flag);
-  renderAgenda();
   closeFlagModal();
-  document.getElementById('f-text').value = '';
-
   if (LIVE) {
     try {
       await fetch(APPS_SCRIPT_URL, {
@@ -720,7 +784,7 @@ async function submitFlag(){
       toast('Flag saved locally only', true);
     }
   } else {
-    toast('Snapshot mode — flag not saved to sheet', true);
+    toast('Snapshot mode · flag not saved to sheet', true);
   }
 }
 
@@ -734,10 +798,6 @@ function toast(msg, isError){
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
 }
-
-// ===== Init =====
-if (editorName) document.getElementById('editor-link').textContent = editorName;
-load();
 </script>
 </body>
 </html>

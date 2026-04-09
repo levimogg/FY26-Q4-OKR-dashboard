@@ -38,7 +38,7 @@
       "krs": [
         {"id":"o3-kr1","key_result":"98% CM retention through June 25, 2026","owner":"Amy, Damian, & Lailanie","target":98,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
         {"id":"o3-kr2","key_result":"EOY belonging score ≥95% (baseline TBD)","owner":"Amy, Damian, & Lailanie","target":95,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
-        {"id":"o3-kr3","key_result":"≥90% favorable across 3 principal-survey indicators (rehire, TFA support, recommend)","owner":"Amy & Damian","target":90,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o3-kr3","key_result":"≥90% favorable across 3 principal survey indicators (rehire, TFA support, recommend)","owner":"Amy & Damian","target":90,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""},
         {"id":"o3-kr4","key_result":"100% of current partners receive a documented progress touchpoint by [date TBD]","owner":"Amy & Damian","target":100,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""}
       ]
     },
@@ -50,13 +50,13 @@
       "next_step": "",
       "krs": [
         {"id":"o4-kr1","key_result":"200+ attendees at alumni induction","owner":"Tierra","target":200,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
-        {"id":"o4-kr2","key_result":"8–10 named priority alumni confirmed in the room","owner":"Tierra","target":10,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o4-kr2","key_result":"8 to 10 named priority alumni confirmed in the room","owner":"Tierra","target":10,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
         {"id":"o4-kr3","key_result":"≥90% favorable satisfaction on post-event survey","owner":"Tierra","target":90,"current":0,"unit":"%","status_override":"","status_auto":"on_track","note":"","next_step":""}
       ]
     },
     {
       "id": "o5",
-      "objective": "Every incoming CM has a classroom — 40+ placed by FDOS.",
+      "objective": "Every incoming CM has a classroom. 40+ placed by FDOS.",
       "status": "on_track",
       "status_note": "",
       "next_step": "",
@@ -87,8 +87,8 @@
       "next_step": "",
       "krs": [
         {"id":"o7-kr1","key_result":"$500K raised by May 31","owner":"Ryan","target":500000,"current":0,"unit":"$","status_override":"","status_auto":"on_track","note":"","next_step":""},
-        {"id":"o7-kr2","key_result":"FY27 development plan approved by board by [date TBD] — pipeline, quarterly benchmarks, strategy pyramid, stewardship + comms + ops plans","owner":"Ryan","target":1,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
-        {"id":"o7-kr3","key_result":"Board Fundraising Committee owns ≥2 fall-event workstreams and completes ≥[X TBD] individualized donor touches","owner":"Ryan","target":2,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o7-kr2","key_result":"FY27 development plan approved by board by [date TBD]: pipeline, quarterly benchmarks, strategy pyramid, stewardship + comms + ops plans","owner":"Ryan","target":1,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
+        {"id":"o7-kr3","key_result":"Board Fundraising Committee owns ≥2 fall event workstreams and completes ≥[X TBD] individualized donor touches","owner":"Ryan","target":2,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""},
         {"id":"o7-kr4","key_result":"Annual stewardship plan launched and ≥[X TBD] touchpoints executed by May 31","owner":"Ryan","target":1,"current":0,"unit":"#","status_override":"","status_auto":"on_track","note":"","next_step":""}
       ]
     }
